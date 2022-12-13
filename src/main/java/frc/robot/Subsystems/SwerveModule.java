@@ -16,6 +16,8 @@ public class SwerveModule {
     public final double x;
     public final double y;
     public final double encOffs;
+    public final double angleFromCenter;
+    public final double distFromCenter;
 
     public double targetSteer = 0;
     public double targetDrive = 0;
@@ -31,8 +33,8 @@ public class SwerveModule {
      * @param encID the CAN ID of the cancoder
      * @param pid {P,I,D} as a double array
      * @param drivePID {P,I,D} as a double array
-     * @param X x position of module relative to robot center (right positive)
-     * @param Y y position of module relative to robot center (forward positive)
+     * @param X x position of module relative to robot center (forward positive)
+     * @param Y y position of module relative to robot center (left positive)
      * @param DRVCONV drive encoder conversion value
      * @param ENCOS absolute encoder offset (for centering modules)
      */
@@ -51,6 +53,14 @@ public class SwerveModule {
         x = X; // set the module position values and encoder offsets
         y = Y;
         encOffs = ENCOS;
+
+        distFromCenter = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2)); // precalc math for later
+        double tmp = Math.atan(y/x);
+        if (x < 0) {
+            if (y > 0) tmp += 180;
+            else tmp -= 180;
+        }
+        angleFromCenter = tmp;
 
     }
 

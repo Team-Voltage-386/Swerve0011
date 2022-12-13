@@ -53,12 +53,13 @@ public final class Constants {
 
     /** Can IDs, PID values, ect. */
     public static final class DriveConstants {
+        public static final int kIMUid = 2;
         public static final double[] kSwerveSteerPID = {0.5, 0.0, 0.0005};
         public static final double[] kSwerveDrivePID = {1, 0.1, 0.5};
         public static final double kSwerveDriveEncConv = 0.1;
-        public static final SwerveModule LFSwerve = new SwerveModule(14, 18, 24, kSwerveSteerPID, kSwerveDrivePID, -0.5, 0.5, kSwerveDriveEncConv, 0.0);
+        public static final SwerveModule LFSwerve = new SwerveModule(14, 18, 24, kSwerveSteerPID, kSwerveDrivePID, 0.5, -0.5, kSwerveDriveEncConv, 0.0);
         public static final SwerveModule RFSwerve = new SwerveModule(11, 15, 21, kSwerveSteerPID, kSwerveDrivePID, 0.5, 0.5, kSwerveDriveEncConv, 0.0);
         public static final SwerveModule LRSwerve = new SwerveModule(13, 17, 23, kSwerveSteerPID, kSwerveDrivePID, -0.5, -0.5, kSwerveDriveEncConv, 0.0);
-        public static final SwerveModule RRSwerve = new SwerveModule(12, 16, 26, kSwerveSteerPID, kSwerveDrivePID, 0.5, -0.5, kSwerveDriveEncConv, 0.0);
+        public static final SwerveModule RRSwerve = new SwerveModule(12, 16, 26, kSwerveSteerPID, kSwerveDrivePID, -0.5, 0.5, kSwerveDriveEncConv, 0.0);
     }
 }

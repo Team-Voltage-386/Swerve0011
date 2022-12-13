@@ -2,13 +2,23 @@ package frc.robot.Subsystems;
 
 import static frc.robot.Constants.DriveConstants.*;
 
+import com.ctre.phoenix.sensors.Pigeon2;
 
-/** a static drivetrain class that fixes issues caused by using dynamic typing for this sort of thing */
+
+/** A swervedrive drivetrain */
 public class Drivetrain {
+
+        public static double xDriveTarget = 0;
+        public static double yDriveTarget = 0;
+        public static double angleTarget = 0;
+
+        private static double xPos = 0;
+        private static double yPos = 0;
+
+        public static Pigeon2 IMU = new Pigeon2(kIMUid);
 
 
         public static void init() {
-                
         }
 
 
