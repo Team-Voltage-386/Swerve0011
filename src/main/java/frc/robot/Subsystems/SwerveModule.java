@@ -1,4 +1,4 @@
-package frc.robot.Subsystems.Components;
+package frc.robot.Subsystems;
 
 import com.ctre.phoenix.sensors.CANCoder;
 import com.revrobotics.CANSparkMax;
@@ -19,6 +19,8 @@ public class SwerveModule {
 
     public double targetSteer = 0;
     public double targetDrive = 0;
+
+    public int driveMult = 1;
 
 
     
@@ -49,12 +51,23 @@ public class SwerveModule {
         x = X; // set the module position values and encoder offsets
         y = Y;
         encOffs = ENCOS;
-        
-    }
-
-    public void update() {
 
     }
 
+    public void drive() {
+        steerMotor.set(steerPID.calculate(getSwerveHeadingError()));
+        driveMotor.set(driveMult * drivePID.calculate(driveMult * driveMotor.getEncoder().getVelocity(), targetDrive));
+    }
 
+    private double getSwerveHeadingError() {
+        double res = targetSteer - (enc.getAbsolutePosition() - encOffs);
+        while (res < -180) res += 360; // bring error around to range from -180 to 180
+        while (res > 180) res -= 360;
+        if (Math.abs(res) > 90) { // if it is quicker to drive motor backwards, set drive multiplier and adjust error
+            driveMult = -1;
+            if (res > 0) res -= 180;
+            else res += 180;
+        } else driveMult = 1;
+        return res;
+    }
 }
