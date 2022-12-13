@@ -49,18 +49,6 @@ public final class Constants {
         public static final int kRightJoystickPressed = 10;
     }
 
-    /** limelight settings */
-    public static final class LimeLightConstants {
-        public static final double targetLostWaitTime = 0.15;
-        public static final double targetHeight = 2.6416;
-        public static final double mountHeight = 0.95; //98
-        public static final double mountAngle = 41; //43 
-        /** the math for calculating the distance to the target */
-        public static final doubAlg distALG = (double ty) -> {return (targetHeight-mountHeight)/Math.tan(Math.PI*((mountAngle+ty)/180));};
-        public static final int kDefaultPipeline = 0;
-        public static final double kAimTolerance = 1.2;
-    }
-
     /** shooting system constants */
     public static final class BigIronConstants {
         public static final int kDrumOneID = 11;

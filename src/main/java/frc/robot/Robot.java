@@ -10,9 +10,6 @@ import frc.robot.Routines.DriverRoutine;
 import frc.robot.Routines.ManipulatorRoutine;
 import frc.robot.Routines.Routine;
 import frc.robot.Subsystems.Drivetrain;
-import frc.robot.Subsystems.Launcher;
-import frc.robot.Subsystems.LimeLight;
-
 /**
  * The Routine-Based Main Robot Class
  * @author Carl C
@@ -32,8 +29,6 @@ public class Robot extends RobotBase {
   public void robotInit() {
     // init subsystems here
     Drivetrain.init();
-    LimeLight.init();
-    Launcher.init();
 
     // instance routines here
     new DriverRoutine();
@@ -48,8 +43,6 @@ public class Robot extends RobotBase {
   public void robotPeriodic() {
     // subsystems update
     Drivetrain.update();
-    LimeLight.update();
-    Launcher.update();
 
     // custom code
     
