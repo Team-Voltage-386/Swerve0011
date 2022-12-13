@@ -55,12 +55,7 @@ public class SwerveModule {
         encOffs = ENCOS;
 
         distFromCenter = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2)); // precalc math for later
-        double tmp = Math.atan(y/x);
-        if (x < 0) {
-            if (y > 0) tmp += 180;
-            else tmp -= 180;
-        }
-        angleFromCenter = tmp;
+        angleFromCenter = Math.toDegrees(Math.atan2(y, x));
 
     }
 
